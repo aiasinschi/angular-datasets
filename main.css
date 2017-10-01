@@ -1,0 +1,53 @@
+body {
+    font-family: 'Abel', sans-serif;
+    font-size: 18px;
+    line-height: 90%;
+}
+#dataset-list {
+    width: 20%;
+    float: left;
+    height: 900px;
+    overflow: scroll;
+}
+#dataset-detail {
+    width: 70%;
+    border: 4px solid #000044;
+    float: left;
+}
+#loading {
+    padding: 10px;
+    background-color: #000044;
+    color: white;
+    border-radius: 75px;
+    position: absolute;
+    left: 40%;
+    top: 40%;
+    z-index: 100;
+}
+
+.dataset {    
+    margin: 2px;
+    border: 4px solid white;
+    cursor: pointer;
+}
+.dataset:hover {
+    border: 4px solid #000044;
+    border-radius: 15px;
+    //background-color: #000044;
+    color: orange;
+}
+.dataset:active {
+    background-color: #0011FF;
+    color: white;
+}
+
+p {
+    margin: 5px;
+}
+
+.ds-label {
+    font-weight: bold;
+}
+.heading {
+    font-size: large;
+}
