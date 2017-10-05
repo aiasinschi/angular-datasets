@@ -3,6 +3,10 @@ body {
     font-size: 18px;
     line-height: 90%;
 }
+input {
+    font-family: 'Abel', sans-serif;
+    font-size: 16px;
+}
 #dataset-list {
     width: 20%;
     float: left;
