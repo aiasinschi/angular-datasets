@@ -1,30 +1,24 @@
 var theKey = 'b667e8eefd9f853b7357054725f24b2df91983970';
 var datasetsURL = 'https://api.census.gov/data.json';
 
-var module = angular.module('statistics', ['ngRoute']);
+var Helper = Helper || {};
+Helper.showLoading = function() {
+        var loadingDiv = document.getElementById('loading');
+        loadingDiv.style.display = 'block';
+};
 
-module.config(function ($routeProvider) {
-    $routeProvider
-      .when('/datasets', {
-          templateUrl: 'index.html',
-          controller: 'Statistics'
-      })      
-      .otherwise({
-          redirectTo: '/datasets'
-      });
-});
+Helper.hideLoading = function() {
+        var loadingDiv = document.getElementById('loading');
+        loadingDiv.style.display = 'none';
+};
+
+var module = angular.module('statistics', []);
 
 module.controller('Statistics', function($scope, $http) {
     $scope.baseURL = 'https://api.census.gov/data';
     $scope.variables = [];
-    $scope.showLoading = function() {
-        var loadingDiv = document.getElementById('loading');
-        loadingDiv.style.display = 'block';
-    };
-    $scope.hideLoading = function() {
-        var loadingDiv = document.getElementById('loading');
-        loadingDiv.style.display = 'none';
-    };
+    $scope.showLoading = Helper.showLoading;
+    $scope.hideLoading = Helper.hideLoading;
     
     $scope.showLoading();
     $http.get(datasetsURL/* + '?key=' + theKey*/).
@@ -59,5 +53,4 @@ module.controller('Statistics', function($scope, $http) {
             $scope.hideLoading();
         });
     }
-    
 });

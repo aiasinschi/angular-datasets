@@ -15,7 +15,7 @@ input {
 }
 #dataset-detail {
     width: 70%;
-    border: 4px solid #000044;
+    border: 1px solid #000044;
     float: left;
 }
 #loading {
@@ -35,10 +35,11 @@ input {
     cursor: pointer;
 }
 .dataset:hover {
-    border: 4px solid #000044;
-    border-radius: 15px;
+    border: 1px solid #000044;
+    padding: 3px;
+    border-radius: 5px;
     //background-color: #000044;
-    color: orange;
+    color: #C0A0F0;
 }
 .dataset:active {
     background-color: #0011FF;

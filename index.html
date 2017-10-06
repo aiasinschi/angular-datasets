@@ -3,10 +3,9 @@
 	<head>
 		<title>Hello AngularJS</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-route.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="main.css">
-    	<script src="main.js"></script>
+        <link rel="stylesheet" type="text/css" href="/main.css">
+    	<script src="/main.js"></script>
 	</head>
 
 	<body>
@@ -15,11 +14,14 @@
             <p class="ds-label heading">List of datasets:</p>
             <div ng-repeat="object in dataset" class="dataset" 
                  ng-click="updateDetails(object)">
+                <div>{{object['title']}}</div>
+<!--
                 <p><span class="ds-label">Year:</span> {{object['c_vintage']}} </p>
                 <p><span class="ds-label">Title:</span> {{object['title']}}</p>
                 <p><span class="ds-label">Access level:</span> {{object['accessLevel']}}</p>
                 <p><span class="ds-label">Bureau code:</span> {{object['bureauCode']}}</p>
                 <p><span class="ds-label">Program code:</span> {{object['programCode']}}</p>                
+-->
             </div> 
 		</div>
         <div id="dataset-detail">
@@ -33,7 +35,7 @@
                 </p>
             </div>
         </div>
-        <div id="loading" style="display: none;">Loading... Please wait</div>
+        <div id="loading" style="display: none;">Loading. Please wait...</div>
         </div>
 	</body>
 </html>
