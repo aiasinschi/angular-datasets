@@ -8,14 +8,13 @@ input {
     font-size: 16px;
 }
 #dataset-list {
-    width: 20%;
+    /*width: 20%;*/
     float: left;
-    height: 900px;
-    overflow: scroll;
+    /*height: 900px;
+    overflow: scroll;*/
 }
 #dataset-detail {
-    width: 70%;
-    border: 1px solid #000044;
+
     float: left;
 }
 #loading {
@@ -38,7 +37,6 @@ input {
     border: 1px solid #000044;
     padding: 3px;
     border-radius: 5px;
-    //background-color: #000044;
     color: #C0A0F0;
 }
 .dataset:active {
@@ -52,6 +50,10 @@ p {
 
 .ds-label {
     font-weight: bold;
+}
+.ds-back-button {
+    position: absolute;
+    right: 20px;
 }
 .heading {
     font-size: large;

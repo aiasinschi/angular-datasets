@@ -1,7 +1,12 @@
 var theKey = 'b667e8eefd9f853b7357054725f24b2df91983970';
 var datasetsURL = 'https://api.census.gov/data.json';
 
-var Helper = Helper || {};
+var Helper = Helper || {
+    DS_LIST: 0,
+    DS_VARS: 1,
+    DS_DATA: 2
+};
+
 Helper.showLoading = function() {
         var loadingDiv = document.getElementById('loading');
         loadingDiv.style.display = 'block';
@@ -19,6 +24,16 @@ module.controller('Statistics', function($scope, $http) {
     $scope.variables = [];
     $scope.showLoading = Helper.showLoading;
     $scope.hideLoading = Helper.hideLoading;
+    $scope.activeComponent = Helper.DS_LIST;
+    $scope.showDatasetList = function() {
+        return $scope.activeComponent === Helper.DS_LIST;
+    }
+    $scope.showDatasetVars = function() {
+        return $scope.activeComponent === Helper.DS_VARS;
+    }
+    $scope.showDatasetData = function() {
+        return $scope.activeComponent === Helper.DS_DATA;
+    }
     
     $scope.showLoading();
     $http.get(datasetsURL/* + '?key=' + theKey*/).
@@ -33,10 +48,15 @@ module.controller('Statistics', function($scope, $http) {
             }
             $scope.hideLoading();
         });
+    $scope.focusOnDatasets = function() {
+        $scope.activeComponent = Helper.DS_LIST;
+    }
     $scope.updateDetails = function(object) {
+        $scope.activeComponent = Helper.DS_VARS;
         var year = object['c_vintage'];
-        var fullURL  = $scope.baseURL + (year ? '/' +  year : '') + $scope.mergeStrings(object['c_dataset']) + '/variables.json';
-        console.log(fullURL);
+        $scope.fullDataURL  = $scope.baseURL + (year ? '/' +  year : '') + $scope.mergeStrings(object['c_dataset']) + '/';
+        //?get=ST,COUNTY,NAME,NAICS2002,NESTAB&for=COUNTY:*
+        var fullURL = $scope.fullDataURL + 'variables.json';
         $scope.showLoading();
         $http.get(fullURL).then(function(response) {
             var variablesObj = response.data.variables;
