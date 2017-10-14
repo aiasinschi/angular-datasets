@@ -1,5 +1,7 @@
 var http = require('http');
 var fs = require("fs");
+var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
+    ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0'
 
 http.createServer(function(request, response) {
     if(request.url === "/index"){
@@ -19,12 +21,7 @@ http.createServer(function(request, response) {
 		console.log("Requested URL is: " + request.url);
 		response.end();
 	}
-    /*fs.readFile("index.html", function(err, data){
-        response.writeHead(200, {'Content-Type': 'text/html'});
-        response.write(data);
-        response.end();
-    });*/
-}).listen(3000);
+}).listen(port, ip);
 
 function sendFileContent(response, fileName, contentType){
 	fs.readFile(fileName, function(err, data){
